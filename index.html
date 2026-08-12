@@ -472,6 +472,25 @@
         <div class="project__card">
           <div class="project__thumb"
           onclick="openGallery([
+          'assets/Project8.mp4',
+          'assets/Project8-1.png',
+          'assets/Project8-2.png',
+          'assets/Project8-3.png',
+          'assets/Project8-4.png',
+          'assets/Project8-5.png',
+          'assets/Project8-6.png',
+          'assets/Project8-7.png',
+          ])">
+            <img src="assets/Project8.png" alt="Project">
+          </div>
+          <h4>Four Cylinder Engine</h4>
+          <p>
+            Designed and modeled a four cylinder engine using Autodesk Inventor, including 3D part modeling, assembly design, and detailed engineering drawings.
+          </p>
+        </div>
+        <div class="project__card">
+          <div class="project__thumb"
+          onclick="openGallery([
           'assets/Project1-1.png',
           'assets/Project1-2.png',
           'assets/Project1-3.png',
@@ -759,7 +778,10 @@
     <div class="gallery__popup" id="galleryPopup">
       <span class="gallery__close">&times;</span>
       <button class="gallery__prev">&#10094;</button>
-      <img id="galleryImage">
+      <img id="galleryImage" alt="Gallery">
+      <video id="galleryVideo" controls>
+        <source src="" type="video/mp4">    
+      </video>
       <button class="gallery__next">&#10095;</button>
     </div>
 

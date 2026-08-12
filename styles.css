@@ -555,6 +555,17 @@ header {
     border-radius: 10px;
 }
 
+#galleryVideo{
+    display:none;
+    width:auto;
+    height:auto;
+    max-width:90vw;
+    max-height:85vh;
+    object-fit:contain;
+    border-radius:10px;
+    background:#000;
+}
+
 .gallery__close{
     position:absolute;
     top:30px;

@@ -117,42 +117,66 @@ let images = [];
 let current = 0;
 const popup = document.getElementById("galleryPopup");
 const image = document.getElementById("galleryImage");
-function openGallery(list){
-    images = list;
+const video = document.getElementById("galleryVideo");
+
+// Menampilkan gambar atau video
+function showGalleryItem() {
+  const file = images[current];
+  if (file.toLowerCase().endsWith(".mp4")) {
+    // Sembunyikan gambar
+    image.style.display = "none";
+    // Tampilkan video
+    video.style.display = "block";
+    video.src = file;
+    video.load();
+  } else {
+    // Hentikan video
+    video.pause();
+    video.removeAttribute("src");
+    video.style.display = "none";
+    // Tampilkan gambar
+    image.style.display = "block";
+    image.src = file;
+  }
+}
+// Open gallery
+function openGallery(list) {
+  images = list;
+  current = 0;
+  showGalleryItem();
+  popup.classList.add("active");
+}
+window.openGallery = openGallery;
+// Close button
+document.querySelector(".gallery__close").onclick = () => {
+  popup.classList.remove("active");
+  video.pause();
+  video.removeAttribute("src");
+};
+// Next button
+document.querySelector(".gallery__next").onclick = () => {
+  current++;
+  if (current >= images.length) {
     current = 0;
-    image.src = images[current];
-    popup.classList.add("active");
-}
-
-window.openGallery = openGallery;
-
-window.openGallery = openGallery;
-
-document.querySelector(".gallery__close").onclick=()=>{
-popup.classList.remove("active");
-}
-
-document.querySelector(".gallery__next").onclick=()=>{
-current++;
-if(current>=images.length){
-current=0;
-}
-image.src=images[current];
-}
-
-document.querySelector(".gallery__prev").onclick=()=>{
-current--;
-if(current<0){
-current=images.length-1;
-}
-image.src=images[current];
-}
-
-popup.onclick=(e)=>{
-if(e.target===popup){
-popup.classList.remove("active");
-}
-}
+  }
+  showGalleryItem();
+};
+// Previous button
+document.querySelector(".gallery__prev").onclick = () => {
+  current--;
+  if (current < 0) {
+    current = images.length - 1;
+  }
+  showGalleryItem();
+};
+// Klik background untuk menutup popup
+popup.onclick = (e) => {
+  if (e.target === popup) {
+    popup.classList.remove("active");
+    video.pause();
+    video.removeAttribute("src");
+  }
+};
 
 const contactBtn = document.getElementById("contact-btn");
 
